@@ -537,5 +537,15 @@ var UTIL = require('../../lib/util');
       var result = UTIL.text.utf16.decode(bytes);
       ASSERT.equal(result, '\ud83c\udc00');
     });
+
+    it('should correctly detect a valid printable string', function() {
+      result = UTIL.isPrintableString('This is a valid printable string.');
+      ASSERT.equal(result, true);
+    });
+
+    it('should correctly detect an invalid printable string', function() {
+      result = UTIL.isPrintableString('bob@example.com');
+      ASSERT.equal(result, false);
+    });
   });
 })();
